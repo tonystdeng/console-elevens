@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/w4AT+yyxfw=",
+  "success": true,
+  "projectFilePath": "/home/tony/Documents/ICS/Assignments/PASS1/PASS1.csproj",
+  "expectedPackageFiles": [
+    "/home/tony/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.12/microsoft.aspnetcore.app.ref.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
