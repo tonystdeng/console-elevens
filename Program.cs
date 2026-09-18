@@ -15,7 +15,7 @@ namespace PASS1;
 class Program
 {
     // const var
-
+    const int SCRW = 120;
     
     // global var
     static Random rand = new Random();
@@ -30,6 +30,77 @@ class Program
         // out
     }
 
+
+    // DISPLAY UTIL FUNCTIONS
+    // ##############################################################################
+
+    /// <summary>
+    /// makes a text in the center of the screen
+    /// </summary>
+    /// <param name="text">the original text</param>
+    /// <returns>the centered text</returns>
+    static string CenterText(string text)
+    {
+        int spaceNum = (SCRW - text.Length) / 2;
+        string newText = ' ' * spaceNum + text;
+        return newText;
+    }
+
+    /// <summary>
+    /// writes a formated and colored sigma title
+    /// </summary>
+    /// <param name="title">a lame beta title</param>
+    static void WriteTitle(string title)
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(CenterText(title));
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine('~' * SCRW);
+        Console.ResetColor();
+    }
+
+    /// <summary>
+    /// display title, options in good format, get user choices, check if valid, and return it
+    /// </summary>
+    /// <param name="error">if its called by itself because user is stupid</param>
+    /// <returns>the valid user input</returns>
+    static int HomeScreen(bool error = false)
+    {
+        // display options in good format
+        Console.Clear();
+        WriteTitle("ELEVENS");
+        Console.WriteLine("\n" + CenterText("1. PLAY"));
+        Console.WriteLine("\n" + CenterText("2. STATS"));
+        Console.WriteLine("\n" + CenterText("3. EXIT"));
+
+        // get choice
+        if (error)
+        {
+            Console.WriteLine("\n" + CenterText("Your last input was invalid, only enter 1/2/3, try again"));
+        }
+        else
+        {
+            Console.WriteLine("\n");
+        }
+        Console.Write(CenterText("Choice: "));
+
+        // see if input are strictly 1/2/3
+        if (!int.TryParse(Console.ReadLine(), out int input))
+        {
+            return HomeScreen(true);
+        }
+        switch(input)
+        {
+            case 1:
+            case 2:
+            case 3:
+            return input;
+            default:
+            return HomeScreen(true);
+        }
+    }
+
+    
 
 
     // CARD UTIL FUNCITONS
